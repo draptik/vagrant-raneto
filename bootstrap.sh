@@ -51,7 +51,6 @@ fi
 ## Install Raneto Wiki ===============================================
 echo "[bootstrap.sh] "
 echo "[bootstrap.sh] Installing Raneto Wiki..."
-#RANETO_PACKED=0.7.1.tar.gz
 RANETO_VERSION=0.9.0
 RANETO_PACKED=Raneto-${RANETO_VERSION}.tar.gz
 cp /vagrant/raneto/${RANETO_PACKED} /home/vagrant/
@@ -62,7 +61,6 @@ su - vagrant -c "tar xzf ${RANETO_PACKED}"
 
 ## Install -----------------------------------
 echo "[bootstrap.sh] Installing Raneto..."
-#su - vagrant -c "cd Raneto-0.7.1 && npm install"
 su - vagrant -c "cd Raneto-${RANETO_VERSION} && npm install"
 
 ## Backup demo content -----------------------
@@ -89,7 +87,7 @@ echo "[bootstrap.sh] Congratulations! You have installed the Raneto wiki!"
 echo "[bootstrap.sh] "
 echo "[bootstrap.sh] Next steps:"
 echo "[bootstrap.sh] 1. Login to the Vagrant container using 'vagrant ssh'."
-echo "[bootstrap.sh] 2. Switch to folder Raneto-0.7.1: 'cd Raneto-*'."
+echo "[bootstrap.sh] 2. Switch to folder Raneto-*: 'cd Raneto-*'."
 echo "[bootstrap.sh] 3. Then, start the application using 'npm start'."
 echo "[bootstrap.sh] 4. You can then view the application in the host browser by visiting http://127.0.0.1:8080"
 echo "[bootstrap.sh] "
