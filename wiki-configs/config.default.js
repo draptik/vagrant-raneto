@@ -1,8 +1,7 @@
 
 'use strict';
 
-// Exports
-module.exports = {
+var config = {
 
   // Your site title (format: page_title - site_title)
   site_title: 'my wiki...',
@@ -14,7 +13,7 @@ module.exports = {
   support_email: '',
 
   // Footer Text / Copyright
-  copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - Your Name HERE',
+  copyright: 'Copyright &copy; '+ new Date().getFullYear() +' - <a href="http://raneto.com">Powered by Raneto</a>',
 
   // Excerpt length (used in search)
   excerpt_length: 400,
@@ -34,10 +33,10 @@ module.exports = {
   // Specify the path of your content folder where all your '.md' files are located
   // Fix: Needs trailing slash for now!
   // Fix: Cannot be an absolute path
-  content_dir : 'content/',
+  content_dir : __dirname + '/content/',
 
   // Where is the public directory or document root?
-  public_dir  : __dirname + '/../public/',
+  public_dir  : __dirname + '/../themes/default/public/',
 
   // The base URL of your images folder,
   // Relative to config.public_dir
@@ -47,14 +46,25 @@ module.exports = {
   // Add your analytics tracking code (including script tags)
   analytics: '',
 
-  // Set to false to disable the web editor
-  allow_editing : true,
+  // Set to true to enable the web editor
+  allow_editing : false,
 
   // Set to true to enable HTTP Basic Authentication
   authentication : false,
   credentials    : {
     username : 'admin',
     password : 'password'
+  },
+
+  locale: 'en',
+
+  // Edit Home Page title, description, etc.
+  home_meta : {
+    //title       : 'Custom Home Title',
+    //description : 'Custom Home Description'
   }
 
 };
+
+// Exports
+module.exports = config;

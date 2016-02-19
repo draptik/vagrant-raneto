@@ -51,7 +51,9 @@ fi
 ## Install Raneto Wiki ===============================================
 echo "[bootstrap.sh] "
 echo "[bootstrap.sh] Installing Raneto Wiki..."
-RANETO_PACKED=0.7.1.tar.gz
+#RANETO_PACKED=0.7.1.tar.gz
+RANETO_VERSION=0.9.0
+RANETO_PACKED=Raneto-${RANETO_VERSION}.tar.gz
 cp /vagrant/raneto/${RANETO_PACKED} /home/vagrant/
 chown vagrant.vagrant ${RANETO_PACKED}
 
@@ -59,19 +61,25 @@ chown vagrant.vagrant ${RANETO_PACKED}
 su - vagrant -c "tar xzf ${RANETO_PACKED}"
 
 ## Install -----------------------------------
-su - vagrant -c "cd Raneto-0.7.1 && npm install"
+echo "[bootstrap.sh] Installing Raneto..."
+#su - vagrant -c "cd Raneto-0.7.1 && npm install"
+su - vagrant -c "cd Raneto-${RANETO_VERSION} && npm install"
 
 ## Backup demo content -----------------------
-su - vagrant -c "mv /home/vagrant/Raneto-0.7.1/content /home/vagrant/Raneto-0.7.1/content.backup"
+echo "[bootstrap.sh] Backing up example content..."
+su - vagrant -c "mv /home/vagrant/Raneto-${RANETO_VERSION}/example/content /home/vagrant/Raneto-${RANETO_VERSION}/example/content.backup"
 
 ## Link custom content -----------------------
-su - vagrant -c "ln -s /vagrant/wiki-content /home/vagrant/Raneto-0.7.1/content"
+echo "[bootstrap.sh] Linking content..."
+su - vagrant -c "ln -s /vagrant/wiki-content /home/vagrant/Raneto-${RANETO_VERSION}/example/content"
 
 ## Backup wiki configs -----------------------
-su - vagrant -c "mv /home/vagrant/Raneto-0.7.1/example/config.default.js /home/vagrant/Raneto-0.7.1/example/config.default.js.backup"
+echo "[bootstrap.sh] Backing up configs..."
+su - vagrant -c "mv /home/vagrant/Raneto-${RANETO_VERSION}/example/config.default.js /home/vagrant/Raneto-${RANETO_VERSION}/example/config.default.js.backup"
 
 ## custom configs ---------------------------
-su - vagrant -c "cp /vagrant/wiki-configs/config.default.js /home/vagrant/Raneto-0.7.1/example/config.default.js"
+echo "[bootstrap.sh] Copying our configs..."
+su - vagrant -c "cp /vagrant/wiki-configs/config.default.js /home/vagrant/Raneto-${RANETO_VERSION}/example/config.default.js"
 
 echo "[bootstrap.sh] =============================================================================================="
 echo "[bootstrap.sh] =============================================================================================="
@@ -81,7 +89,7 @@ echo "[bootstrap.sh] Congratulations! You have installed the Raneto wiki!"
 echo "[bootstrap.sh] "
 echo "[bootstrap.sh] Next steps:"
 echo "[bootstrap.sh] 1. Login to the Vagrant container using 'vagrant ssh'."
-echo "[bootstrap.sh] 2. Switch to folder Raneto-0.7.1: 'cd Raneto-0.7.1'."
+echo "[bootstrap.sh] 2. Switch to folder Raneto-0.7.1: 'cd Raneto-*'."
 echo "[bootstrap.sh] 3. Then, start the application using 'npm start'."
 echo "[bootstrap.sh] 4. You can then view the application in the host browser by visiting http://127.0.0.1:8080"
 echo "[bootstrap.sh] "
